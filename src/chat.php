@@ -4,7 +4,7 @@ if (!empty($_POST['userName']) && !empty($_POST['password'])):
     $_SESSION['userName'] = $_POST['userName'];
     ?>
     <script type="text/javascript" src="js/jquery.min.js"></script>
-    <script type="text/javascript" src="../public/plugin/js/app/modules/applozic.chat.js"></script>
+    <script type="text/javascript" src="https://cdn.applozic.com/applozic/applozic.chat-5.3.min.js"></script>
     <script type="text/javascript" src="../public/plugin/js/app/modules/applozic.jquery.js"></script>
     <script type="text/javascript" src="js/events.js"></script>
     <script type="text/javascript" src="js/applozic-custom-ui.js"></script>

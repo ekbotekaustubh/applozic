@@ -71,13 +71,5 @@ var customApp = {
             },
             success: function(response) {console.log(response);},
             error: function() {}});
-    },
-    getTopicId: function () {
-        Applozic.ALApiService.getTopicId({
-            data: {
-                conversationId: '1edd4ff984fac677987ac6dfa5e1050be'
-            },
-            success: function(response) {console.log(response);},
-            error: function() {}});
     }
 };
