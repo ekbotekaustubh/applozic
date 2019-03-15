@@ -145,6 +145,18 @@ var customApp = {
             error: function() {}
         });
     },
+    sendAttachment: function (fileSelectorId, to, message) {
+        var file = document.getElementById(fileSelectorId).files[0];
+        var message = {"type": 5, "contentType": 0, "message": message, "to": to, "metadata":{}, "source": 1};
+        Applozic.ALApiService.sendAttachment({
+            data: {
+                file: file,
+                messagePxy: message
+            },
+            success: function(response) {console.log(response);},
+            error: function(error) {console.log(response)}
+        });
+    },
     logout: function () {
         window.Applozic.AlCustomService.logout();
         window.Applozic.ALSocket.disconnect();
