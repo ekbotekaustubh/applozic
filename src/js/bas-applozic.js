@@ -157,6 +157,49 @@ var customApp = {
             error: function(error) {console.log(response)}
         });
     },
+    createGroup: function (seller, buyer, groupName, clientGroupId, metaData) {
+        Applozic.ALApiService.createGroup({
+            data:
+            {
+                group: {
+                    "clientGroupId": clientGroupId,
+                    "groupName": groupName,
+                    "users": [
+                        { 'userId': seller },
+                        { 'userId': buyer }
+                    ],
+                    "type": 7,      //(required) 1:private, 2:public, 5:broadcast, 7:GroupofTwo, 10:Support Chat
+                    "metadata": {
+                        'title': metaData.title,
+                        'subtitle': metaData.subtitle,
+                        'imageUrl': metaData.imageUrl,
+                        'truckId': metaData.truckId,
+                        'registration': metaData.registrationYear
+                    }
+                }
+            },
+            success: function (response) { console.log(response); },
+            error: function () { }
+        });
+    },
+    // Data can be {groupId: "clientGroupId", newName: "New name of group", imageUrl: "image url of the group"}
+    updateGroupInfo: function (data) {
+        Applozic.ALApiService.groupUpdate({
+            data: data,
+            success: function (response) { console.log(response); },
+            error: function () { }
+        });
+    },
+    loadGroups: function () {
+        Applozic.ALApiService.loadGroups({
+            success: function (response) {
+                console.log(response);
+            },
+            error: function (response) {
+                console.log(response);
+            }
+        });
+    },
     logout: function () {
         window.Applozic.AlCustomService.logout();
         window.Applozic.ALSocket.disconnect();
